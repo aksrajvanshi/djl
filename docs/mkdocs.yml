@@ -79,8 +79,9 @@ nav:
       - Android: 'android/README.md'
       - AWS S3 support: '3rdparty/aws-ai/README.md'
       - Hadoop support: '3rdparty/hadoop/README.md'
-  - DJL-Demo:
+  - DJL demos:
       - Malicious URL Detector: 'docs/djl-demo/maliciousUrlDetector.md'
+      - Live Object Detection: 'docs/djl-demo/live-object-detection.md'
       - Visualizing Training with DJL: 'docs/djl-demo/visualizingTrainingwithDJL.md'
       - Pneumonia Detection: 'docs/djl-demo/pneumonia-detection.md'
       - AWS Kinesis Video Streams: 'docs/djl-demo/aws-kinesis.md'
