@@ -76,7 +76,7 @@ Use the following command to clean up resources created in your AWS account:
 ### Minimize package size
 DJL can download deep learning framework at runtime. In this demo we use the following dependency:
 ```
-    runtimeOnly "ai.djl.mxnet:mxnet-native-auto:1.7.0-a"
+runtimeOnly "ai.djl.mxnet:mxnet-native-auto:1.7.0-a"
 ```
 With this auto detection dependency, the final `.zip` file is less then 3M.
 The extracted MXNet native library file will be stored in `/tmp` folder, and it's around 155M, this can be further
@@ -98,7 +98,9 @@ aws lambda invoke --function-name DJL-Lambda --payload '{"artifactId": "squeezen
 ```
 
 ## Limitations
+
 AWS Lambda has the following limitations:
+
 - GPU instance is not yet available
 - 512 MB /tmp limit
 - Slow startup if not frequently used

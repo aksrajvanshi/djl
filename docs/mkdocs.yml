@@ -85,3 +85,7 @@ nav:
       - Pneumonia Detection: 'docs/djl-demo/pneumonia-detection.md'
       - AWS Kinesis Video Streams: 'docs/djl-demo/aws-kinesis.md'
       - Serverless Model Serving with AWS Lambda: 'docs/djl-demo/aws-lambda-model.md'
+      - Model Serving on AWS Elastic Beanstalk: 'docs/djl-demo/beanstalk-model-serving.md'
+      - Spark Image Classification: 'docs/djl-demo/spark-image-classification.md'
+      - Use multiple engines in single JVM: 'docs/djl-demo/multi-engine.md'
+      - DJL Component in Apache Camel: 'docs/djl-demo/camel-djl.md'
