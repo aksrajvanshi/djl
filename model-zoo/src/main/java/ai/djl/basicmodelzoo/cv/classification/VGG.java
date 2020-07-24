@@ -1,3 +1,16 @@
+/*
+ * Copyright 2020 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ *
+ * Licensed under the Apache License, Version 2.0 (the "License"). You may not use this file except in compliance
+ * with the License. A copy of the License is located at
+ *
+ * http://aws.amazon.com/apache2.0/
+ *
+ * or in the "license" file accompanying this file. This file is distributed on an "AS IS" BASIS, WITHOUT WARRANTIES
+ * OR CONDITIONS OF ANY KIND, either express or implied. See the License for the specific language governing permissions
+ * and limitations under the License.
+ */
+
 package ai.djl.basicmodelzoo.cv.classification;
 
 import ai.djl.ndarray.types.Shape;
@@ -16,18 +29,22 @@ import ai.djl.nn.pooling.Pool;
  */
 public final class VGG {
 
+    private VGG() {}
+
     /**
+     * function to return a VGG block.
+     *
      * @param convArch 2-D array consisting of number of convolutions of each layer and number of
-     *     filters in each block
+     *     filters in each block.
      * @return a VGG Block.
      */
-    public static Block vgg(int[][] convArch) {
+    public static Block vggBlock(int[][] convArch) {
 
         SequentialBlock block = new SequentialBlock();
         VGG vgg = new VGG();
         // The convolutional layer part
         for (int i = 0; i < convArch.length; i++) {
-            block.add(vgg.VGGBlock(convArch[i][0], convArch[i][1]));
+            block.add(vgg.vggConstituentBlock(convArch[i][0], convArch[i][1]));
         }
 
         // The fully connected layer part
@@ -44,12 +61,14 @@ public final class VGG {
     }
 
     /**
+     * creates VGG network constituent blocks.
+     *
      * @param numConvs Numbers of layers in each feature block.
      * @param numChannels Numbers of filters in each feature block. List length should match the
      *     layers.
-     * @return
+     * @return returns a VGG sequential block.
      */
-    public SequentialBlock VGGBlock(int numConvs, int numChannels) {
+    public SequentialBlock vggConstituentBlock(int numConvs, int numChannels) {
 
         SequentialBlock tempBlock = new SequentialBlock();
         for (int i = 0; i < numConvs; i++) {

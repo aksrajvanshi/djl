@@ -1,3 +1,16 @@
+/*
+ * Copyright 2020 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ *
+ * Licensed under the Apache License, Version 2.0 (the "License"). You may not use this file except in compliance
+ * with the License. A copy of the License is located at
+ *
+ * http://aws.amazon.com/apache2.0/
+ *
+ * or in the "license" file accompanying this file. This file is distributed on an "AS IS" BASIS, WITHOUT WARRANTIES
+ * OR CONDITIONS OF ANY KIND, either express or implied. See the License for the specific language governing permissions
+ * and limitations under the License.
+ */
+
 package ai.djl.basicmodelzoo.cv.classification;
 
 import ai.djl.ndarray.types.Shape;
@@ -21,6 +34,8 @@ import ai.djl.nn.pooling.Pool;
  */
 public final class NiN {
 
+    private NiN() {}
+
     /**
      * The NiN block consists of one convolutional layer followed by two 1×1 convolutional layers
      * that act as per-pixel fully-connected layers with ReLU activations. The convolution width of
@@ -28,7 +43,7 @@ public final class NiN {
      *
      * @return a NiN block.
      */
-    public static Block niN() {
+    public static Block nin() {
 
         NiN nin = new NiN();
         SequentialBlock block =
@@ -48,16 +63,17 @@ public final class NiN {
                         // Transform the four-dimensional output into two-dimensional output
                         // with a shape of (batch size, 10)
                         .add(Blocks.batchFlattenBlock());
-
         return block;
     }
 
     /**
-     * @param numChannels the number of channels in a NiN block
-     * @param kernelShape kernel Shape in the 1st convolutional layer of a NiN block
-     * @param strideShape stride Shape in a NiN block
-     * @param paddingShape padding Shape in a NiN block
-     * @return
+     * creates a constituent niN block
+     *
+     * @param numChannels the number of channels in a NiN block.
+     * @param kernelShape kernel Shape in the 1st convolutional layer of a NiN block.
+     * @param strideShape stride Shape in a NiN block.
+     * @param paddingShape padding Shape in a NiN block.
+     * @return a NiN sequential block.
      */
     public SequentialBlock niNBlock(
             int numChannels, Shape kernelShape, Shape strideShape, Shape paddingShape) {
@@ -84,7 +100,6 @@ public final class NiN {
                                         .setFilters(numChannels)
                                         .build())
                         .add(Activation::relu);
-
         return tempBlock;
     }
 }

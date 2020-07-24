@@ -1,3 +1,16 @@
+/*
+ * Copyright 2020 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ *
+ * Licensed under the Apache License, Version 2.0 (the "License"). You may not use this file except in compliance
+ * with the License. A copy of the License is located at
+ *
+ * http://aws.amazon.com/apache2.0/
+ *
+ * or in the "license" file accompanying this file. This file is distributed on an "AS IS" BASIS, WITHOUT WARRANTIES
+ * OR CONDITIONS OF ANY KIND, either express or implied. See the License for the specific language governing permissions
+ * and limitations under the License.
+ */
+
 package ai.djl.basicmodelzoo.cv.classification;
 
 import ai.djl.ndarray.NDArray;
@@ -27,12 +40,14 @@ import java.util.stream.Collectors;
  */
 public final class GoogLeNet {
 
+    private GoogLeNet() {}
+
     /**
      * creates a GoogLeNet network block
      *
-     * @return
+     * @return a googleNet network block
      */
-    public static Block GoogLeNet() {
+    public static Block googLeNet() {
 
         GoogLeNet googLeNet = new GoogLeNet();
         // creation of block1
@@ -91,7 +106,15 @@ public final class GoogLeNet {
                         Linear.builder().setUnits(10).build());
     }
 
-    // c1 - c4 are the number of output channels for each layer in the path
+    /**
+     * Creates an inception block, used as a consituent block in GoogLeNet.
+     *
+     * @param c1 channel 1 parameter.
+     * @param c2 channel 2 array parameter.
+     * @param c3 channel 3 array parameter.
+     * @param c4 channel 4 parameter.
+     * @return an inception Parallel block used in GoogLeNet network.
+     */
     public ParallelBlock inceptionBlock(int c1, int[] c2, int[] c3, int c4) {
 
         // Path 1 is a single 1 x 1 convolutional layer
