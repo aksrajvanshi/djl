@@ -34,8 +34,8 @@ public class BananaTest {
     public void testBananaRemote() throws IOException, TranslateException {
         BananaDetection bananaDetection =
                 BananaDetection.builder()
-                        .optUsage(Dataset.Usage.TEST)
-                        .setSampling(1, true)
+                        .optUsage(Dataset.Usage.TRAIN)
+                        .setSampling(1, false)
                         .optLimit(10)
                         .build();
 
@@ -52,6 +52,7 @@ public class BananaTest {
                         batch.getData().singletonOrThrow().getShape(), new Shape(1, 3, 256, 256));
                 Assert.assertEquals(
                         batch.getLabels().singletonOrThrow().getShape(), new Shape(1, 1, 5));
+                System.out.println(batch.getLabels().singletonOrThrow());
             }
         }
     }
