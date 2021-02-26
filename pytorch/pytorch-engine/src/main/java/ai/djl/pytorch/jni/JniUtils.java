@@ -1477,4 +1477,10 @@ public final class JniUtils {
                 ndArray.getManager(),
                 PyTorchLibrary.LIB.torchNorm(ndArray.getHandle(), ord, longAxes, keepDims));
     }
+
+    public static PtNDArray nonZeros(PtNDArray ndArray){
+        return new PtNDArray(
+                ndArray.getManager(),
+                PyTorchLibrary.LIB.torchNonZeros(ndArray.getHandle()));
+    }
 }
