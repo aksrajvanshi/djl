@@ -1479,6 +1479,9 @@ public final class JniUtils {
     }
 
     public static PtNDArray nonZeros(PtNDArray ndArray){
+        if(ndArray.isScalar()){
+            ndArray = (PtNDArray) ndArray.reshape(-1);
+        }
         return new PtNDArray(
                 ndArray.getManager(),
                 PyTorchLibrary.LIB.torchNonZeros(ndArray.getHandle()));

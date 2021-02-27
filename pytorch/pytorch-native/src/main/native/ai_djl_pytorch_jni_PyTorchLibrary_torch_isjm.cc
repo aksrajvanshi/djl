@@ -156,6 +156,7 @@ JNIEXPORT jlong JNICALL Java_ai_djl_pytorch_jni_PyTorchLibrary_torchRepeatInterl
   API_BEGIN()
   const auto* tensor_ptr = reinterpret_cast<torch::Tensor*>(jhandle);
   const torch::Tensor* result_ptr = new torch::Tensor(tensor_ptr->repeat_interleave(jrepeats, jdim));
+
   return reinterpret_cast<uintptr_t>(result_ptr);
   API_END_RETURN()
 }
@@ -165,6 +166,7 @@ JNIEXPORT jlong JNICALL Java_ai_djl_pytorch_jni_PyTorchLibrary_torchNonZeros(
   API_BEGIN()
   const auto* tensor_ptr = reinterpret_cast<torch::Tensor*>(jhandle);
   const torch::Tensor* result_ptr = new torch::Tensor(tensor_ptr->nonzero());
+
   return reinterpret_cast<uintptr_t>(result_ptr);
   API_END_RETURN()
 }
