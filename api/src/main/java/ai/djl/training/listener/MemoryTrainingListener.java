@@ -51,7 +51,9 @@ public class MemoryTrainingListener extends TrainingListenerAdapter {
     public MemoryTrainingListener() {}
 
     /**
-     * Constructs a {@link MemoryTrainingListener} that outputs data in the given directory.
+     * Constructs a {@link MemoryTrainingListener} that outputs data in the given directory. If an
+     * output directory is provided, the file "$outputDir/memory.log" will be created after training
+     * with the memory usage results.
      *
      * <p>If an output directory is provided, the file "$outputDir/memory.log" will be created after
      * training with the memory usage results. The log file consists of heap bytes, non-heap bytes,
